@@ -61,13 +61,13 @@
                           </thead>
 
                           <tbody>
-                            <tr>
                               <?php
                               $no = 0;
 
                               foreach ($pembayaran as $value) {
                                 $no++
                               ?>
+                            <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $value->nisn; ?></td>
                                 <td><?php echo $value->nama; ?></td>
@@ -87,7 +87,6 @@
 
 
                                 </td>
-                            </tr>
                           <?php
                               }
                           ?>

@@ -32,7 +32,6 @@
                     </thead>
                     
                     <tbody>
-                      <tr>
                         <?php
                         $no = 0;
 
@@ -40,6 +39,7 @@
                             $no++
                         
                         ?>
+                      <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value->kode_kelas; ?></td>
                         <td><?php echo $value->nama_kelas; ?></td>

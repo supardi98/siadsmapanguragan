@@ -31,7 +31,6 @@
                     </thead>
                     
                     <tbody>
-                      <tr>
                       <?php
                         $no = 0;
 
@@ -39,6 +38,7 @@
                             $no++
                         
                         ?>
+                      <tr>
                         <td><?php echo $no; ?></td>
                         <td><?php echo $value->tahun_ajaran; ?></td>
                         <td>
