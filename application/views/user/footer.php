@@ -1,25 +1,4 @@
-     <!-- Modal Logout -->
-     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabelLogout">Pemberitahuan</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Apakah Kamu Serius Akan Keluar Dari Aplikasi Ini?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Tidak</button>
-                  <a href="<?= base_url('AuthSiswa') ?>" class="btn btn-success">Iya</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div> 
+     
      <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
