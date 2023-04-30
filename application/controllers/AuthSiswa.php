@@ -31,16 +31,16 @@ class AuthSiswa extends CI_Controller
 		} elseif ($password == $cek_login->password) {
 			$data_session = array(
 				'akses' => 'siswa',
-				'nisn' => $cek_login->nisn,
-				'password' => $cek_login->password
+				'id' => $cek_login->id,
 			);
-			$this->session->set_flashdata($data_session);
+			$this->session->set_userdata('AuthSiswa', $data_session);
 			redirect('User');
 		}
 	}
 
 	function logout()
 	{
+		$this->session->unset_userdata('AuthSiswa');
 		$this->M_global_model->ntf_swal('Informasi', 'Selamat Anda Berhasil Logout', 'info');
 		redirect('AuthSiswa');
 	}

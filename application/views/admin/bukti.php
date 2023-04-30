@@ -8,7 +8,7 @@
                 <div class="card-body">
                 <form>
                 <div class="form-group">
-                <img src="<?php echo base_url();?>assets\foto\bukti.jpg" class="img-thumbnail" width="200" height="1100" alt="Bukti Pembayaran">
+                <img src="<?php echo base_url();?>assets\foto\<?php echo $bukti->bukti ?>" class="img-thumbnail" width="200" height="1100" alt="Bukti Pembayaran">
                 </div>
                 
                 </div>

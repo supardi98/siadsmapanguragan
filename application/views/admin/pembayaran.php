@@ -7,7 +7,7 @@
               <li class="breadcrumb-item active" aria-current="page"><?= $judul;?></li>
             </ol>
           </div>   
-          <button class="btn btn-sm btn-danger">Cek Bukti Pembayaran</button>
+          <a href="<?php echo base_url('/Transaksi/bukti') ?>/<?php echo $queryUserEdit->id ?>" class="btn btn-sm btn-danger">Cek Bukti Pembayaran</a>
           <button type="button"  class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal2"
                             id="#myBtn2">
                             BAYAR
@@ -23,7 +23,7 @@
           <th>Kelas  : </th> <th><?php echo $queryUserEdit->nama_kelas; ?></th><br>
           <th>Tahun Ajaran   : </th> <th><?php echo $queryUserEdit->tahun_ajaran; ?></th><br>
           <th>Status Pembayaran   : </th> <th><?php echo $queryUserEdit->status; ?></th><br>
-          <th>Sisa Pembayaran   : </th> <th><?php echo rupiah($queryUserEdit->biaya); ?></th><br>
+          <th>Sisa Pembayaran   : </th> <th><?php echo rupiah($queryUserEdit->biaya ?? 0); ?></th><br>
           
           
         </div>
@@ -31,7 +31,7 @@
        
         <!-- <div class="card mb-4">
           <div class="card-header py-3 d-flex flex-row align-items-center right-content-between">
-          <th>Sisa Pembayaran   : </th> <th><?php echo rupiah($queryPembayar->biaya); ?></th><br>
+          <th>Sisa Pembayaran   : </th> <th><?php echo rupiah($queryPembayar->biaya ?? 0); ?></th><br>
        </div> -->
         </div>
        

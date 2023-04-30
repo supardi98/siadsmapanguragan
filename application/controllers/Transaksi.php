@@ -51,14 +51,17 @@ class Transaksi extends CI_Controller {
     public function bukti($id)
     {
         $data['title']  = 'SIAD SMA Pangurugan';
-        $detail = $this->Bukti_model->Detaildata();
+        $detail = $this->Bukti_model->Detaildata($id);
         $DATA = array('Detail' => $detail);
         $judul['judul'] = 'Pembayaran';
         $tamp = $judul + $DATA;
+
+        $bukti = $detail[0];
+
 		$this->load->view('template/header',$data);
 		$this->load->view('template/sidebar');
         $this->load->view('template/topbar');
-        $this->load->view('admin/bukti',$tamp);
+        $this->load->view('admin/bukti',compact('bukti'));
         $this->load->view('template/footer');  
     }
 

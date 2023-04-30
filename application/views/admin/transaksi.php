@@ -71,7 +71,7 @@
                         <td><?php echo $value->nisn; ?></td>
                         <td><?php echo $value->nama; ?></td>
                         <td><?php echo $value->nama_kelas; ?></td>
-                        <td><?php echo rupiah($value->biaya); ?></td>
+                        <td><?php echo rupiah(@$value->biaya ?? 0); ?></td>
                         <td>Buku LKS, BAT</td>
                         <td>
                         <a  href="<?php echo base_url('/Transaksi/bukti') ?>/<?php echo $value->id ?>" data-toggle="tooltip" data-placement="bottom"  class="btn btn-success btn-sm">
