@@ -43,7 +43,9 @@
     <script src="<?php echo base_url(); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/ruang-admin.min.js"></script>
-    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="//cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
     <script>
   
   
