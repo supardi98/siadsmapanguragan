@@ -1,3 +1,9 @@
+<?php
+
+$auth = $this->session->userdata('Auth');
+
+?>
+
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -29,17 +35,18 @@
             <th>Setoran</th>
             <th>Sisa Pembayaran</th>
             <th>Status</th>
+            <th>Aksi</th>
           </tr>
         </thead>
 
         <tbody>
-            <?php
-            $no = 0;
+          <?php
+          $no = 0;
 
-            foreach ($queryPembayar as $value) {
-              $no++
-            ?>
-          <tr>
+          foreach ($queryPembayar as $value) {
+            $no++
+          ?>
+            <tr>
 
               <td><?php echo $no; ?></td>
               <td><?php echo $value->tanggal; ?></td>
@@ -49,10 +56,21 @@
               <td><?php echo rupiah($value->setoran); ?></td>
               <td><?php echo rupiah($value->biaya); ?></td>
               <td><?= $value->status ? '<button class="btn btn-success">Berhasil</button>' : '<button class="btn btn-warning">Tunggu Konfirmasi</button>' ?></td>
-          </tr>
-        <?php
-            }
-        ?>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm <?= $auth->akses == 1 ? '' : 'd-none' ?>" data-toggle="modal" data-target="#exampleModal2" id="#myBtn3">
+                  <i class="fas fa-trash"></i>
+
+                </button>
+
+                <a href="<?php echo base_url('/Transaksi/pembayaran/') ?>/<?php echo $value->id ?>" class="btn btn-warning btn-sm <?= $auth->akses == 2 ? '' : 'd-none' ?>">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </td>
+
+            </tr>
+          <?php
+          }
+          ?>
         </tbody>
       </table>
     </div>
@@ -61,6 +79,27 @@
 
 
 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Pemberitahuan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda yakin akan menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+        <a href="<?php echo base_url('/MasterTagihan/delete') ?>/<?php echo $value->id ?>" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger alert_notif btn-icon-text"> <i class="ti-trash btn-icon-prepend"></i>Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

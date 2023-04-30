@@ -13,7 +13,11 @@ class Tagihan extends CI_Controller {
     }
     public function index()
     {
-        $siswa_id = $this->session->userdata('AuthSiswa')->id;
+        $auth = $this->session->userdata('AuthSiswa');
+        if (!$auth) {
+            redirect(base_url('AuthSiswa'));
+        }
+        $siswa_id = $auth->id;
 
         $data['title']  = 'SIAD SMA Pangurugan';
         $judul['judul'] = 'Tagihan Siswa';

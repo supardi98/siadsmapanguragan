@@ -27,7 +27,7 @@ class Periode_model extends CI_Model
         {
             if(isset($params['id']))
             {
-                $this->db->where('period_id', $params['id']);
+                $this->db->where('id', $params['id']);
             }
     
             if(isset($params['status']))
@@ -59,11 +59,11 @@ class Periode_model extends CI_Model
             }
             else
             {
-                $this->db->order_by('period_id', 'desc');
+                $this->db->order_by('id', 'desc');
             }
     
-            $this->db->select('period_id, period_start, period_end, period_status');
-            $res = $this->db->get('period');
+            $this->db->select('id, period_start, period_end, period_status');
+            $res = $this->db->get('tb_periode');
     
             if(isset($params['id']))
             {
@@ -74,6 +74,31 @@ class Periode_model extends CI_Model
                 return $res->result_array();
             }
         }
+
+        
+        function get2($id)
+        {
+          $query = $this->db->where('id', $id)->get('tb_periode');
+          return $query->row();
+        }  
+
+        function create($data)
+        {
+          $this->db->insert('tb_periode', $data);
+  
+          return $this->db->insert_id();
+        }  
+  
+        function update($id, $data)
+        {
+          return $this->db->where('id', $id)->update('tb_periode', $data);
+        }  
+  
+        function delete($id)
+        {
+          return $this->db->where('id', $id)->delete('tb_periode');
+        }  
+  
                        
                         
 }

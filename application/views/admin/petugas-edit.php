@@ -27,7 +27,7 @@
         <input class="form-control form-control-sm  mb-3" id="password" name="password" type="password" placeholder="Masukkan Password baru jika ingin diubah">
 
 
-        <a href="<?= base_url('siswa'); ?>" class="btn btn-outline-primary">Batal</a>
+        <a href="<?= base_url('petugas'); ?>" class="btn btn-outline-primary">Batal</a>
         <button type="submit" class="btn btn-primary">Simpan</button>
 
 

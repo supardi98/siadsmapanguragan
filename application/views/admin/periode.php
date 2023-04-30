@@ -1,5 +1,11 @@
 
-       <!-- Container Fluid-->
+
+<?php
+
+$auth = $this->session->userdata('Auth');
+
+?>
+<!-- Container Fluid-->
        <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800"><?= $judul;?></h1>
@@ -8,7 +14,7 @@
               <li class="breadcrumb-item active" aria-current="page"><?= $judul;?></li>
             </ol>
           </div>
-          <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal"
+          <button type="button"  class="btn btn-success btn-sm <?= $auth->akses == 1 ? '' : 'd-none' ?>" data-toggle="modal" data-target="#exampleModal"
                     id="#myBtn">
                     <i class="fas fa-plus"></i>
                      Tambah 
@@ -44,21 +50,15 @@
                         <td>
                         <?php echo $value->status; ?>
                         </td>
-                        <td>
-                        <button href="" class="btn btn-success btn-sm"><i class="fas fa-check"></i></button>
-                         <button type="button"  class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal3"
-                            id="#myBtn4">
-                            <i class="fas fa-eye"></i>
-                           
-                        </button>
-                        <button type="button"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal3"
-                            id="#myBtn3">
-                            <i class="fas fa-trash"></i>
-                           
-                        </button>
-                       
-                       
-                        </td>
+                        <td class="<?= $auth->akses == 1 ? '' : 'd-none' ?>">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal2" id="#myBtn1">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <a href="<?php echo base_url('/periode/edit/') ?>/<?php echo $value->id ?>" class="btn btn-warning btn-sm">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </td>
+
                     </tr>
                     <?php
                      }
@@ -115,7 +115,26 @@
                     
            
                    
-      
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Pemberitahuan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda yakin akan menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+        <a href="<?php echo base_url('/periode/delete') ?>/<?php echo $value->id ?>" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger alert_notif btn-icon-text"> <i class="ti-trash btn-icon-prepend"></i>Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
                    
                   
                     

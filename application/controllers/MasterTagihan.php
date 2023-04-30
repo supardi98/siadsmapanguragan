@@ -43,4 +43,16 @@ class MasterTagihan extends CI_Controller {
         redirect(base_url('MasterTagihan'));
     }
 
+    public function delete($id)
+    {
+        $query = $this->Transaksi_model->delete($id);
+        if ($query) {
+            $this->M_global_model->ntf_swal('Informasi', 'Berhasil hapus data', 'success');
+        } else {
+            $this->M_global_model->ntf_swal('Informasi', 'Gagal hapus data', 'error');
+        }
+        redirect(base_url('MasterTagihan'));
+    }
+
+
 }

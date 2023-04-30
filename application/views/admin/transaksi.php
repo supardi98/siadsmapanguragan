@@ -1,4 +1,10 @@
-        <!-- Container Fluid-->
+<?php
+
+$auth = $this->session->userdata('Auth');
+
+?>
+
+<!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800"><?= $judul; ?></h1>
@@ -61,13 +67,13 @@
                           </thead>
 
                           <tbody>
-                              <?php
-                              $no = 0;
+                            <?php
+                            $no = 0;
 
-                              foreach ($pembayaran as $value) {
-                                $no++
-                              ?>
-                            <tr>
+                            foreach ($pembayaran as $value) {
+                              $no++
+                            ?>
+                              <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $value->nisn; ?></td>
                                 <td><?php echo $value->nama; ?></td>
@@ -87,9 +93,9 @@
 
 
                                 </td>
-                          <?php
-                              }
-                          ?>
+                              <?php
+                            }
+                              ?>
 
 
                           </tbody>
@@ -131,7 +137,7 @@
               $('#dataTable').DataTable({
                 dom: 'Bfrtip',
                 buttons: [
-                  'excel', 'pdf', 'print'
+                  <?=$auth->akses == 2 ? "'print'" : ''?>
                 ]
               });
             });

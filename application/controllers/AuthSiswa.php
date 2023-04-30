@@ -15,6 +15,11 @@ class AuthSiswa extends CI_Controller
 	public function index()
 	{
 		$auth = $this->session->userdata('AuthSiswa');
+        if ($auth) {
+            redirect(base_url('User'));
+        }
+
+		$auth = $this->session->userdata('AuthSiswa');
 		if ($auth) {
 			redirect('User');
 		}

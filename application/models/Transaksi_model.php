@@ -91,6 +91,11 @@ class Transaksi_model extends CI_Model
             $query = $this->input_setoran($data);
         }
     }
+
+    function delete($id)
+    {
+      return $this->db->where('id', $id)->delete('tb_pembayaran');
+    }  
 }
 
 

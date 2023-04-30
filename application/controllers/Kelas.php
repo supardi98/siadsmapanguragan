@@ -52,7 +52,46 @@ class Kelas extends CI_Controller {
         redirect(base_url('kelas'));
 	}
 
-    public function fungsiDelete($id)
+    public function edit($id)
+    {
+        $data['title']  = 'SIAD SMA Pangurugan';
+        $judul = 'Edit Data Kelas';
+
+        $kelas = $this->Kelas_model->get($id);
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
+        $this->load->view('template/topbar');
+        $this->load->view('admin/kelas-edit', compact('kelas', 'judul'));
+        $this->load->view('template/footer');
+    }
+
+    public function update()
+	{
+        $id = $this->input->post('id');
+        $kode_kelas = $this->input->post('kode_kelas');
+        $nama_kelas = $this->input->post('nama_kelas');
+		$jumlah = $this->input->post('jumlah');
+      
+        
+        $data = array(
+			'kode_kelas' => $kode_kelas,
+            'nama_kelas' => $nama_kelas,
+            'jumlah' => $jumlah,
+        );
+
+		$query = $this->Kelas_model->update($id, $data);
+		if($query <0){
+            $this->M_global_model->ntf_swal('Informasi', 'Gagal update data', 'error');
+			
+		} else {
+			$this->M_global_model->ntf_swal('Informasi', 'Berhasil update data', 'success');
+		}
+		redirect(base_url('Kelas'));
+
+	}
+
+    public function delete($id)
 	{
 		$query = $this->Kelas_model->delKel($id);
 		if($query){
@@ -61,7 +100,7 @@ class Kelas extends CI_Controller {
 		} else {
 			$this->M_global_model->ntf_swal('Informasi', 'Gagal hapus data', 'error');
 		}
-		redirect(base_url('kelas'));
+		redirect(base_url('Kelas'));
 	}
 
 }

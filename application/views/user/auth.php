@@ -48,7 +48,7 @@
                     <hr>
                   
                   </form>
-                
+                  <a href="/Auth"><button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">LOGIN PETUGAS DISINI</button></a>                
                 </div>
               </div>
             </div>
