@@ -1,4 +1,4 @@
-<div id="content-wrapper" class="d-flex flex-column" style="background-image: url(https://www.w3schools.com/cssref/paper.gif);">
+<div id="content-wrapper" class="d-flex flex-column" style="background-image: url(/assets/img/bg.jpg);">
       <div id="content">
         <!-- TopBar -->
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
