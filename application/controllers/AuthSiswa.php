@@ -14,6 +14,11 @@ class AuthSiswa extends CI_Controller
 	}
 	public function index()
 	{
+		$auth = $this->session->userdata('AuthSiswa');
+		if ($auth) {
+			redirect('User');
+		}
+
 		$data['title']  = 'SIAD SMA Pangurugan';
 		$this->load->view('user/auth', $data);
 	}
@@ -29,11 +34,7 @@ class AuthSiswa extends CI_Controller
 			$this->M_global_model->ntf_swal('Informasi', 'Maap! NISN atau Password yang ada masukan salah', 'error');
 			redirect('AuthSiswa');
 		} elseif ($password == $cek_login->password) {
-			$data_session = array(
-				'akses' => 'siswa',
-				'id' => $cek_login->id,
-			);
-			$this->session->set_userdata('AuthSiswa', $data_session);
+			$this->session->set_userdata('AuthSiswa', $cek_login);
 			redirect('User');
 		}
 	}

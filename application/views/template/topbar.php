@@ -1,3 +1,12 @@
+<?php
+
+$auth = $this->session->userdata('Auth');
+$username = $auth->username;
+$role = $auth->akses;
+$roleName = $role == 1 ? 'admin' : 'bendahara';
+
+?>
+
 <div id="content-wrapper" class="d-flex flex-column" style="background-image: url(/assets/img/bg.jpg);">
   <div id="content">
     <!-- TopBar -->
@@ -14,7 +23,7 @@
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img class="img-profile rounded-circle" src="<?php echo base_url() ?>assets/img/logo/logo.jpg" style="max-width: 60px">
-            <span class="ml-2 d-none d-lg-inline text-white small">Administator</span>
+            <span class="ml-2 d-none d-lg-inline text-white small"><?=$username?> ( <?=$roleName?> )</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">
@@ -48,7 +57,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Tidak</button>
-            <a href="<?= base_url('auth') ?>" class="btn btn-success">Iya</a>
+            <a href="<?= base_url('auth') ?>/logout" class="btn btn-success">Iya</a>
           </div>
         </div>
       </div>

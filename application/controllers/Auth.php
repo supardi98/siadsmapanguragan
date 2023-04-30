@@ -13,6 +13,10 @@ class Auth extends CI_Controller {
 	}
     public function index()
     {
+		$auth = $this->session->userdata('Auth');
+		if ($auth) {
+			redirect('home');
+		}
         $data['title']  = 'SIAD SMA Pangurugan';
 		$this->load->view('login/auth',$data);
     }
@@ -30,31 +34,16 @@ class Auth extends CI_Controller {
 			redirect('auth');
 		}elseif($password == $cek_login->password)
 		{
-			if($cek_login->akses == '1')
-			{
-				$data_session = array(
-					'akses' => $cek_login->akses,
-					'username' => $cek_login->username,
-					'password' => $cek_login->password
-				);
-				$this->session->set_flashdata($data_session);
-				$this->M_global_model->ntf_swal('Informasi', 'Selamat Anda Berhasil Login', 'success'); 
-				redirect('home');
-				
-			}elseif($cek_login->akses == '2')
-			{
-				$data_session = array(
-					'akses' => $cek_login->akses,
-					'username' => $cek_login->username,
-					'password' => $cek_login->password
-				);
-				$this->session->set_flashdata($data_session);
-				redirect('User');
-			}
+			$data_session = $cek_login;
+			unset($data_session->password);
+			$this->session->set_userdata('Auth', $data_session);
+			$this->M_global_model->ntf_swal('Informasi', 'Selamat Anda Berhasil Login', 'success'); 
+			redirect('home');
 		}
 	}
 
 	function logout(){
+		$this->session->unset_userdata('Auth');
         $this->M_global_model->ntf_swal('Informasi', 'Selamat Anda Berhasil Logout', 'info'); 
         redirect('auth');
         

@@ -18,9 +18,9 @@
     </a>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  
-    <script src="<?php echo base_url(); ?>/vendor/jquery/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo base_url(); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/ruang-admin.min.js"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>

@@ -25,7 +25,7 @@ class Pembayaran extends CI_Controller
 
     public function bayar()
     {
-        $siswa_id = $this->session->userdata('AuthSiswa')['id'];
+        $siswa_id = $this->session->userdata('AuthSiswa')->id;
         $siswa = $this->Siswa_model->getDataDetail($siswa_id);
         $nisn = $siswa->nisn;
         $nama = $siswa->nama;
