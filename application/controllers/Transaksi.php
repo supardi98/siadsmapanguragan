@@ -15,43 +15,41 @@ class Transaksi extends CI_Controller {
 
     public function index()
     {
+        $judul = 'Transaksi';
         $data['title']  = 'SIAD SMA Pangurugan';
-        // $queryAllKel = $this->M_global->ambildatakelas();
-        // $DATA = array('queryKel' => $queryAllKel);
-        $queryPemb = $this->Transaksi_model->ambil_data_pembayaran();
-        $DATA = array('queryPembayar' => $queryPemb);
-        $queryAllSis = $this->Siswa_model->ambildatasiswa();
-        $DATA2 = array('querySis' => $queryAllSis);
-        $judul['judul'] = 'Transaksi';
-        $tamp = $judul + $DATA2+ $DATA;
+
+        $pembayaran = $this->Transaksi_model->ambil_data_pembayaran(0);
 		$this->load->view('template/header',$data);
 		$this->load->view('template/sidebar');
         $this->load->view('template/topbar');
-        $this->load->view('admin/transaksi',$tamp);
+        $this->load->view('admin/transaksi', compact('pembayaran', 'judul'));
         $this->load->view('template/footer');  
     }
 
 
     public function pembayaran($id)
     {
+        $siswa_id = $this->session->userdata('AuthSiswa')['id'];
+
         $data['title']  = 'SIAD SMA Pangurugan';
-        $queryPemb = $this->Transaksi_model->ambil_data_pembayaran($id);
+        $queryPemb = $this->Transaksi_model->Detaildata($id);
         $DATA = array('queryPembayar' => $queryPemb);
-        $queryUserDetail = $this->Transaksi_model->getDataUserDetail($id);
+        $queryUserDetail = $this->Siswa_model->getDataDetail($siswa_id);
         $DATA2 = array('queryUserEdit' => $queryUserDetail);
         $judul['judul'] = 'Pembayaran';
-        $tamp = $judul + $DATA2;
+        $tamp = $judul + $DATA2 + $DATA;
 		$this->load->view('template/header',$data);
 		$this->load->view('template/sidebar');
         $this->load->view('template/topbar');
-        $this->load->view('admin/pembayaran',$tamp,$DATA);
+        $this->load->view('admin/pembayaran',$tamp);
         $this->load->view('template/footer');  
     }
 
     public function bukti($id)
     {
         $data['title']  = 'SIAD SMA Pangurugan';
-        $detail = $this->Bukti_model->Detaildata($id);
+        $transaksi = $this->Transaksi_model->Detaildata($id);
+        $detail = $this->Bukti_model->Detaildata($transaksi->bukti_id);
         $DATA = array('Detail' => $detail);
         $judul['judul'] = 'Pembayaran';
         $tamp = $judul + $DATA;
@@ -65,26 +63,21 @@ class Transaksi extends CI_Controller {
         $this->load->view('template/footer');  
     }
 
-    public function transaksi(){
-       $nisn = $this->input->post('nisn');
-       $nama = $this->input->post('nama');
-       $kelas = $this->input->post('kelas');
+    public function transaksi($id){
        $tanggal = $this->input->post('tanggal');
        $setoran = $this->input->post('setoran');
-
+       $transaksi = $this->Transaksi_model->Detaildata($id);
 
        $data = array(
-        'nisn' =>  $nisn,
-        'nama' => $nama,
-        'kelas' => $kelas,
         'tanggal' => $tanggal,
-        'setoran' => $setoran
+        'setoran' => $setoran,
+        'biaya' => $transaksi->biaya - $setoran,
+        'status' => 1
        );
 
-       $biaya = $this->db->select('biaya')->order_by('id', 'asc')->get_where('tb_siswa', array('nisn' => $nisn))->row();
     //    var_dump($biaya); die;
-     $data['biaya'] = $biaya->biaya - $setoran;
-     $query = $this->Transaksi_model->input_setoran($data);
+    //  $data['biaya'] = $biaya->biaya - $setoran;
+     $query = $this->Transaksi_model->updateData($id, $data);
      
     //  var_dump($query);
 	// 	die;

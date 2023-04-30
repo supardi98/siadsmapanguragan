@@ -7,10 +7,10 @@
               <li class="breadcrumb-item active" aria-current="page"><?= $judul;?></li>
             </ol>
           </div>   
-          <a href="<?php echo base_url('/Transaksi/bukti') ?>/<?php echo $queryUserEdit->id ?>" class="btn btn-sm btn-danger">Cek Bukti Pembayaran</a>
+          <a href="<?php echo base_url('/Transaksi/bukti') ?>/<?php echo $queryPembayar->id ?>" class="btn btn-sm btn-danger">Cek Bukti Pembayaran</a>
           <button type="button"  class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal2"
                             id="#myBtn2">
-                            BAYAR
+                            Konfirmasi
           </button>
           <hr>
           <div class="card mb-4">
@@ -23,7 +23,7 @@
           <th>Kelas  : </th> <th><?php echo $queryUserEdit->nama_kelas; ?></th><br>
           <th>Tahun Ajaran   : </th> <th><?php echo $queryUserEdit->tahun_ajaran; ?></th><br>
           <th>Status Pembayaran   : </th> <th><?php echo $queryUserEdit->status; ?></th><br>
-          <th>Sisa Pembayaran   : </th> <th><?php echo rupiah($queryUserEdit->biaya ?? 0); ?></th><br>
+          <th>Sisa Pembayaran   : </th> <th><?php echo rupiah($queryPembayar->biaya ?? 0); ?></th><br>
           
           
         </div>
@@ -47,7 +47,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                <form action="<?php echo base_url() . 'Transaksi/transaksi'; ?>" method="post">
+                <form action="<?php echo base_url() . 'Transaksi/transaksi/' .$queryPembayar->id; ?>" method="post">
                 <div class="form-group col-12">
                     <label for="id_siswa">NISN Siswa</label>
                     <input type="text" name="nisn" id="nisn" class="form-control"readonly value="<?php echo $queryUserEdit->nisn; ?>">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="tanggal">Tanggal</label>
-                    <input type="date" class="form-control" id="tanggal"   name="tanggal"  >
+                    <input type="date" class="form-control" id="tanggal"   name="tanggal"  value="<?php echo $queryPembayar->tanggal; ?>">
                 </div>
                 <div class="form-group col-12">
                     <label for="setoran">Jumlah Setoran</label>

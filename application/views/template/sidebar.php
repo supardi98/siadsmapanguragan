@@ -24,7 +24,7 @@
             <h6 class="collapse-header">Master Data</h6>
             <a class="collapse-item" href="<?= base_url('#')?>">Data Petugas</a>
             <a class="collapse-item" href="<?= base_url('kelas')?>">Data Kelas</a>
-            <a class="collapse-item" href="<?= base_url('#')?>">Data Tagihan</a>
+            <a class="collapse-item" href="<?= base_url('mastertagihan')?>">Data Tagihan</a>
             <a class="collapse-item" href="<?= base_url('periode')?>">Tahun Ajaran</a>
 
           </div>

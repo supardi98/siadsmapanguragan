@@ -9,6 +9,7 @@ class Pembayaran extends CI_Controller
         parent::__construct();
         $this->load->model('Siswa_model');
         $this->load->model('Bukti_model');
+        $this->load->model('Transaksi_model');
         $this->load->helper(array('form', 'url'));
     }
     public function index()
@@ -25,6 +26,10 @@ class Pembayaran extends CI_Controller
     public function bayar()
     {
         $siswa_id = $this->session->userdata('AuthSiswa')['id'];
+        $siswa = $this->Siswa_model->getDataDetail($siswa_id);
+        $nisn = $siswa->nisn;
+        $nama = $siswa->nama;
+        $kelas = $siswa->nama_kelas;
 
         $bukti = $_FILES['bukti'];
         if ($bukti = '') {
@@ -43,10 +48,23 @@ class Pembayaran extends CI_Controller
 
         $data = array(
             'bukti' => $bukti,
-            'siswa_id' => $siswa_id
         );
 
-        $this->Bukti_model->input_data($data, 'tb_bukti');
+        $bukti_id = $this->Bukti_model->input_data($data, 'tb_bukti');
+        $biaya = $this->Transaksi_model->sisaTagihanTerakhir($siswa_id);
+
+        $data = array(
+            'siswa_id' => $siswa_id,
+            'bukti_id' => $bukti_id,
+            'nisn' =>  $nisn,
+            'nama' => $nama,
+            'kelas' => $kelas,
+            'tanggal' => date("Y-m-d"),
+            'setoran' => 0,
+            'biaya' => $biaya
+           );
+        $query = $this->Transaksi_model->input_setoran($data);
+    
         redirect('pembayaran');
     }
 }
