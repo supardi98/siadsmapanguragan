@@ -13,7 +13,7 @@
             <h1 class="pt-1" style="color:black;"><b>SELAMAT DATANG DI </b></h1>
             <h4 class="pt-1" style="color:black;">Aplikasi Administrasi Pembayaran</h4>
 
-            <img src="<?php echo base_url(); ?>assets/img/logo/logo.jpg" style="max-height: 150px">
+            <img src="<?php echo base_url(); ?>/assets/img/logo/logo.jpg" style="max-height: 150px">
             <h3 class="pt-2" style="color:black;">SMA PLUS NU PANGURAGAN</h3>
           </div>
 
