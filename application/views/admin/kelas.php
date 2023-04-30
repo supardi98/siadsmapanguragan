@@ -76,7 +76,7 @@
                 <div class="modal-body">
                 <input class="form-control form-control-sm  mb-3" id="kode_kelas" name="kode_kelas" type="text" required placeholder="Masukan Kode Kelas">
                 <input class="form-control form-control-sm  mb-3" id="nama_kelas" name="nama_kelas" type="text" required placeholder="Masukan Nama Kelas">
-                <input class="form-control form-control-sm  mb-3" id="jumlah" name="jumlah" type="text" required placeholder="Masukan Nama Kelas">
+                <input class="form-control form-control-sm  mb-3" id="jumlah" name="jumlah" type="text" required placeholder="Masukan Jumlah Siswa">
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Batal</button>
