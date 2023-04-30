@@ -6,7 +6,7 @@ $name = $auth->nama;
 ?>
 
 <div id="content-wrapper" class="d-flex flex-column" style="background-image: url(/assets/img/bg.jpg);">
-      <div id="content">
+      <div id="">
         <!-- TopBar -->
         <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
           <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">

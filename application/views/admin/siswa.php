@@ -1,3 +1,8 @@
+<?php
+
+$auth = $this->session->userdata('Auth');
+
+?>
 
        <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
@@ -8,7 +13,7 @@
               <li class="breadcrumb-item active" aria-current="page"><?= $judul;?></li>
             </ol>
           </div>
-          <button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal"
+          <button type="button"  class="btn btn-success btn-sm <?=$auth->akses == 1 ? '' : 'd-none'?>" data-toggle="modal" data-target="#exampleModal"
                     id="#myBtn">
                     <i class="fas fa-plus"></i>
                      Tambah Data Siswa
@@ -57,7 +62,7 @@
                         <td><?php echo $value->status; ?></td>
                         
                        
-                        <td>
+                        <td class="<?=$auth->akses == 1 ? '' : 'd-none'?>">
                         <button type="button"  class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal3"
                             id="#myBtn3">
                             <i class="fas fa-trash"></i>
