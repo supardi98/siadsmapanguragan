@@ -29,6 +29,16 @@ class Siswa_model extends CI_Model
 			$query = $this->db->get('tb_siswa');
 			return $query->row();
 		}
+
+    function cekNisn($nisn, $id = null) {
+      $this->db->where('nisn', $nisn);
+      if ($id) {
+        $this->db->where('id !=', $id);
+      }
+      $query = $this->db->get('tb_siswa');
+      return $query->row();
+    }
+  
                         
 }
 

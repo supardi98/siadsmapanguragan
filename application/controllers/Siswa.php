@@ -61,8 +61,12 @@ class Siswa extends CI_Controller {
 		$no_hp = $this->input->post('no_hp');
 		$tahun_ajaran = $this->input->post('tahun_ajaran');
         $status = $this->input->post('status');
-		
-      
+
+        $cekNisn = $this->Siswa_model->cekNisn($nisn);
+		if ($cekNisn) {
+            $this->M_global_model->ntf_swal('Informasi', 'Error Nisn sudah ada', 'error');
+            redirect(base_url('siswa'));
+        }
         
         $data = array(
 			'nisn' => $nisn,
@@ -102,6 +106,12 @@ class Siswa extends CI_Controller {
         $status = $this->input->post('status');
 
         $password = $this->input->post('password');
+
+        $cekNisn = $this->Siswa_model->cekNisn($nisn, $id);
+		if ($cekNisn) {
+            $this->M_global_model->ntf_swal('Informasi', 'Error Nisn sudah ada', 'error');
+            redirect(base_url('siswa'));
+        }
       
         
         $data = array(
