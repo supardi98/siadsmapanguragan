@@ -30,7 +30,7 @@
                   <img src="<?php echo base_url(); ?>/assets/img/logo/logo.jpg" height="100" width="100">
                   </br>
                   <br>
-                    <h1 class="h4 text-gray-900 mb-4">ADMINISTRASI ADMIN </h1>
+                    <h1 class="h4 text-gray-900 mb-4">LOGIN PETUGAS </h1>
                   </div>
                   <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash');?>"> </div>
                   <form class="user" action="<?php echo base_url().'Auth/proses_login/' ?>" method="post">
