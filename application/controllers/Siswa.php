@@ -52,6 +52,7 @@ class Siswa extends CI_Controller {
     public function tambah_aksi()
     {
 		$nisn = $this->input->post('nisn');
+		$password = $this->input->post('password');
         $nama = $this->input->post('nama');
 		$nama_kelas = $this->input->post('nama_kelas');
 		$tanggal_lahir = $this->input->post('tanggal_lahir');
@@ -65,6 +66,7 @@ class Siswa extends CI_Controller {
         
         $data = array(
 			'nisn' => $nisn,
+			'password' => $password,
             'nama' => $nama,
 			'nama_kelas' => $nama_kelas,
 			'tanggal_lahir' => $tanggal_lahir,
@@ -97,7 +99,9 @@ class Siswa extends CI_Controller {
         $alamat = $this->input->post('alamat');
 		$no_hp = $this->input->post('no_hp');
 		$tahun_ajaran = $this->input->post('tahun_ajaran');
-        $status = $this->input->post('status');;
+        $status = $this->input->post('status');
+
+        $password = $this->input->post('password');
       
         
         $data = array(
@@ -111,6 +115,10 @@ class Siswa extends CI_Controller {
 			'tahun_ajaran' => $tahun_ajaran,
             'status' => $status
         );
+
+        if ($password) {
+            $data['password'] = $password;
+        }
 
 		$query = $this->Siswa_model->updateDataSiswa($id, $data);
 		if($query <0){

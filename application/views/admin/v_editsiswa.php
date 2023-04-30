@@ -28,7 +28,8 @@
                 <input class="form-control form-control-sm  mb-3"  id="tahun_ajaran" name="tahun_ajaran" type="text" value="<?php echo $querySis->tahun_ajaran?>">
                 <input class="form-control form-control-sm  mb-3"   id="status" name="status" type="text" value="<?php echo $querySis->status?>">
                
- 
+                Ubah Password Siswa
+                <input class="form-control form-control-sm  mb-3"  id="password" name="password" type="password" placeholder="Masukkan Password baru jika ingin diubah"> 
              
               
                   <a href="<?= base_url('siswa');?>" class="btn btn-outline-primary" >Batal</a>

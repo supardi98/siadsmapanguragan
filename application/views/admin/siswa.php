@@ -115,6 +115,8 @@
                 <form action="<?php echo base_url() . 'Siswa/tambah_aksi'; ?>" method="post">
                 <label class="nisn sm-2">NISN</label> 
                 <input class="form-control form-control-sm  mb-3" required id="nisn" name="nisn" type="text" placeholder="Masukan NISN">
+                <label class="nisn sm-2">Password Login</label> 
+                <input class="form-control form-control-sm  mb-3" required id="password" name="password" type="password" placeholder="Masukan Password untuk siswa login">
                 <label class="nama sm-2">Nama Lengkap</label> 
                 <input class="form-control form-control-sm  mb-3" required id="nama" name="nama" type="text" placeholder="Masukan Nama Siswa">
                 <label class="nama_kelas">Kelas</label> 
