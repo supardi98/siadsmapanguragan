@@ -11,7 +11,7 @@
  Target Server Version : 50733 (5.7.33)
  File Encoding         : 65001
 
- Date: 01/05/2023 03:22:57
+ Date: 01/05/2023 06:46:51
 */
 
 SET NAMES utf8mb4;
@@ -46,7 +46,7 @@ CREATE TABLE `tb_bukti`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bukti` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_bukti
@@ -74,6 +74,7 @@ INSERT INTO `tb_bukti` VALUES (23, 'IMG-20230406-WA000414.jpg');
 INSERT INTO `tb_bukti` VALUES (24, 'IMG-20230406-WA000415.jpg');
 INSERT INTO `tb_bukti` VALUES (25, 'IMG-20230406-WA000416.jpg');
 INSERT INTO `tb_bukti` VALUES (26, 'IMG-20230406-WA000417.jpg');
+INSERT INTO `tb_bukti` VALUES (27, 'IMG-20230406-WA000418.jpg');
 
 -- ----------------------------
 -- Table structure for tb_kelas
@@ -90,8 +91,8 @@ CREATE TABLE `tb_kelas`  (
 -- ----------------------------
 -- Records of tb_kelas
 -- ----------------------------
-INSERT INTO `tb_kelas` VALUES (6, 'K001', 'KELAS 10', '25');
-INSERT INTO `tb_kelas` VALUES (7, 'K002', 'KELAS 11', '25');
+INSERT INTO `tb_kelas` VALUES (6, 'K001', 'KELAS 11', '25');
+INSERT INTO `tb_kelas` VALUES (7, 'K002', 'KELAS 10', '25');
 INSERT INTO `tb_kelas` VALUES (9, 'K003', 'Kelas 12', '25');
 
 -- ----------------------------
@@ -129,16 +130,14 @@ CREATE TABLE `tb_pembayaran`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `tb_pembayaran_siswa_id`(`siswa_id`) USING BTREE,
   CONSTRAINT `tb_pembayaran_siswa_id` FOREIGN KEY (`siswa_id`) REFERENCES `tb_siswa` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_pembayaran
 -- ----------------------------
-INSERT INTO `tb_pembayaran` VALUES (9, 7, 25, '121212', 'Joko', 'KELAS 10', '2023-04-30', '20000', '-20000', 1);
-INSERT INTO `tb_pembayaran` VALUES (27, 5, NULL, '12002021', 'Jihan Meyta Sari', 'KELAS 10', '2023-04-30', '0', '10000', 1);
-INSERT INTO `tb_pembayaran` VALUES (28, 7, NULL, '121212', 'Joko', 'KELAS 10', '2023-04-30', '0', '-10000', 1);
-INSERT INTO `tb_pembayaran` VALUES (29, 9, NULL, '1212122', 'askdjkas', 'KELAS 10', '2023-04-30', '0', '10000', 1);
-INSERT INTO `tb_pembayaran` VALUES (30, 7, 26, '121212', 'Joko', 'KELAS 10', '2023-04-30', '10000', '-20000', 1);
+INSERT INTO `tb_pembayaran` VALUES (32, 7, NULL, '121212', 'Joko', 'KELAS 10', '2023-04-30', '0', '100000', 1);
+INSERT INTO `tb_pembayaran` VALUES (33, 9, NULL, '1212122', 'askdjkas', 'KELAS 10', '2023-04-30', '0', '100000', 1);
+INSERT INTO `tb_pembayaran` VALUES (34, 7, 27, '121212', 'Joko', 'KELAS 10', '2023-04-30', '20000', '80000', 1);
 
 -- ----------------------------
 -- Table structure for tb_pengguna
@@ -167,13 +166,13 @@ CREATE TABLE `tb_periode`  (
   `status` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `tahun_ajaran`(`tahun_ajaran`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_periode
 -- ----------------------------
-INSERT INTO `tb_periode` VALUES (3, '2022/2023', 'Aktif');
-INSERT INTO `tb_periode` VALUES (4, '2021/2022', 'Tidak Aktif');
+INSERT INTO `tb_periode` VALUES (3, '2022/2023', '');
+INSERT INTO `tb_periode` VALUES (4, '2021/2022', '');
 
 -- ----------------------------
 -- Table structure for tb_siswa
@@ -212,12 +211,12 @@ CREATE TABLE `tb_user`  (
   `password` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `akses` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tb_user
 -- ----------------------------
 INSERT INTO `tb_user` VALUES (2, 'admin', 'admin123', '1');
-INSERT INTO `tb_user` VALUES (3, 'Jihan', 'jihan', '2');
+INSERT INTO `tb_user` VALUES (5, 'bendahara', 'bendahara', '2');
 
 SET FOREIGN_KEY_CHECKS = 1;
