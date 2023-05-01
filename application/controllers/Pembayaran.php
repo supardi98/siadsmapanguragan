@@ -7,6 +7,7 @@ class Pembayaran extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('M_global_model');
         $this->load->model('Siswa_model');
         $this->load->model('Bukti_model');
         $this->load->model('Transaksi_model');
@@ -39,7 +40,8 @@ class Pembayaran extends CI_Controller
 
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('bukti')) {
-                echo "upload gagal";
+                $this->M_global_model->ntf_swal('Error', $this->upload->display_errors("", ""), 'error');
+                redirect('Pembayaran');
                 die();
             } else {
                 $bukti = $this->upload->data('file_name');
@@ -65,6 +67,7 @@ class Pembayaran extends CI_Controller
            );
         $query = $this->Transaksi_model->input_setoran($data);
     
-        redirect('pembayaran');
+        $this->M_global_model->ntf_swal('Berhasil', 'Tunggu Konfirmasi dari Pengelola Sekolah', 'success');
+        redirect('tagihan');
     }
 }
