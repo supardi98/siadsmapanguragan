@@ -32,6 +32,11 @@ class Periode extends CI_Controller
         $status = $this->input->post('status');
 
 
+        $cekPeriode = $this->Periode_model->cekPeriode($tahun_ajaran);
+		if ($cekPeriode) {
+            $this->M_global_model->ntf_swal('Informasi', 'Error Periode sudah ada', 'error');
+            redirect(base_url('Periode'));
+        }
 
         $data = array(
 
@@ -55,6 +60,12 @@ class Periode extends CI_Controller
         $id = $this->input->post('id');
         $tahun_ajaran = $this->input->post('tahun_ajaran');
         $status = $this->input->post('status');
+
+        $cekPeriode = $this->Periode_model->cekPeriode($tahun_ajaran, $id);
+		if ($cekPeriode) {
+            $this->M_global_model->ntf_swal('Informasi', 'Error Periode sudah ada', 'error');
+            redirect(base_url('Periode'));
+        }
 
         $data = array(
             'tahun_ajaran' => $tahun_ajaran,

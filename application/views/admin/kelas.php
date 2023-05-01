@@ -106,7 +106,7 @@ $auth = $this->session->userdata('Auth');
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-        <a href="<?php echo base_url('/Kelas/fungsiDelete') ?>/<?php echo $value->id ?>" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger alert_notif btn-icon-text"> <i class="ti-trash btn-icon-prepend"></i>Hapus</a>
+        <a href="<?php echo base_url('/Kelas/delete') ?>/<?php echo $value->id ?>" data-toggle="tooltip" data-placement="bottom" title="Hapus" class="btn btn-danger alert_notif btn-icon-text"> <i class="ti-trash btn-icon-prepend"></i>Hapus</a>
       </div>
     </div>
   </div>

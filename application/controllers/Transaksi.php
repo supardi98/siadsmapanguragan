@@ -29,10 +29,9 @@ class Transaksi extends CI_Controller {
 
     public function pembayaran($id)
     {
-        $siswa_id = $this->session->userdata('AuthSiswa')->id;
-
         $data['title']  = 'SIAD SMA Pangurugan';
         $queryPemb = $this->Transaksi_model->Detaildata($id);
+        $siswa_id = $queryPemb->siswa_id;
         $DATA = array('queryPembayar' => $queryPemb);
         $queryUserDetail = $this->Siswa_model->getDataDetail($siswa_id);
         $DATA2 = array('queryUserEdit' => $queryUserDetail);

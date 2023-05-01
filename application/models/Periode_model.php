@@ -98,6 +98,16 @@ class Periode_model extends CI_Model
         {
           return $this->db->where('id', $id)->delete('tb_periode');
         }  
+
+        function cekPeriode($tahun_ajaran, $id = null) {
+          $this->db->where('tahun_ajaran', $tahun_ajaran);
+          if ($id) {
+            $this->db->where('id !=', $id);
+          }
+          $query = $this->db->get('tb_periode');
+          return $query->row();
+        }
+      
   
                        
                         
