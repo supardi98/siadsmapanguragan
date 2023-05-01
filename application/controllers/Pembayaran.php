@@ -33,7 +33,10 @@ class Pembayaran extends CI_Controller
         $kelas = $siswa->nama_kelas;
 
         $bukti = $_FILES['bukti'];
-        if ($bukti = '') {
+        if ($bukti == '') {
+            $this->M_global_model->ntf_swal('Error', "Harap masukkan File", 'error');
+            redirect('Pembayaran');
+            die();
         } else {
             $config['upload_path'] = './assets/foto';
             $config['allowed_types'] = 'jpg|png|gif';
