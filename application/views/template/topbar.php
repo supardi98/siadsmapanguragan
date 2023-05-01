@@ -1,6 +1,10 @@
 <?php
 
 $auth = $this->session->userdata('Auth');
+if (!$auth) {
+  redirect(base_url('Auth'));
+}
+
 $username = $auth->username;
 $role = $auth->akses;
 $roleName = $role == 1 ? 'admin' : 'bendahara';

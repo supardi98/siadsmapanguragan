@@ -1,6 +1,9 @@
 <?php
 
 $auth = $this->session->userdata('AuthSiswa');
+if (!$auth) {
+  redirect(base_url('AuthSiswa'));
+}
 $name = $auth->nama;
 
 ?>
